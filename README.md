@@ -1,51 +1,48 @@
-# ⚡ Olapp — A Modern Alternative to Gradio
+# Olapp
 
-<p align="center">
-<strong>Build beautiful ML demos and web apps with Python — in minutes, not hours.</strong>
-</p>
+**A modern alternative to Gradio. Build ML demos and web apps with Python.**
 
-<p align="center">
-<a href="https://pypi.org/project/olapp/"><img src="https://img.shields.io/pypi/v/olapp?color=7c3aed&style=flat-square" alt="PyPI"></a>
-<a href="https://pypi.org/project/olapp/"><img src="https://img.shields.io/pypi/pyversions/olapp?color=7c3aed&style=flat-square" alt="Python"></a>
-<a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-7c3aed?style=flat-square" alt="License"></a>
-</p>
+[![PyPI](https://img.shields.io/pypi/v/olapp?style=flat-square)](https://pypi.org/project/olapp/)
+[![Python](https://img.shields.io/pypi/pyversions/olapp?style=flat-square)](https://pypi.org/project/olapp/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
+[![Tests](https://img.shields.io/badge/tests-114%20passed-brightgreen?style=flat-square)](#)
 
----
+## Why Olapp?
 
-## ✨ Why Olapp?
+- **Clean, professional UI** — not generic AI styling. Looks like a real product.
+- **Simple API** — `Interface` for quick demos, `Blocks` for complex layouts
+- **25 components** — Textbox, Slider, Image, Chatbot, Code, Gallery, and more
+- **Real-time streaming** — SSE-based live updates
+- **Dark/light themes** — built-in, no config needed
+- **HuggingFace Spaces compatible** — drop in `app.py` and go
 
-- **🎨 Stunning UI** — Premium SaaS-quality design with glassmorphism, smooth animations, dark/light mode
-- **⚡ Lightning Fast** — Built on aiohttp with SSE real-time streaming
-- **🧩 Simple API** — Familiar Interface & Blocks API, just like Gradio but better
-- **📱 Responsive** — Works beautifully on desktop and mobile
-- **🔧 Full Component Suite** — Textbox, Slider, Image, Chatbot, Dataframe, and more
-
-## 🚀 Quick Start
-
-### Installation
+## Install
 
 ```bash
 pip install olapp
 ```
 
-### Simple Interface
+## Quick Start
 
 ```python
 import olapp
 
-def greet(name, enthusiasm):
-    return f"Hello, {name}{'!' * int(enthusiasm)}"
+def greet(name, excitement):
+    return f"Hello, {name}{'!' * int(excitement)}"
 
 app = olapp.Interface(
     fn=greet,
-    inputs=["textbox", olapp.Slider(1, 10, label="Enthusiasm")],
-    outputs="textbox",
-    title="👋 Greeter",
+    inputs=[
+        olapp.Textbox(label="Name", placeholder="Enter your name"),
+        olapp.Slider(minimum=1, maximum=10, value=3, label="Excitement"),
+    ],
+    outputs=olapp.Textbox(label="Greeting"),
+    title="Greeter",
 )
 app.launch()
 ```
 
-### Blocks API
+## Blocks API
 
 ```python
 import olapp
@@ -54,45 +51,65 @@ with olapp.Blocks(title="My App") as app:
     with olapp.Row():
         inp = olapp.Textbox(label="Input")
         out = olapp.Textbox(label="Output")
-    btn = olapp.Button("Run", variant="primary")
+    btn = olapp.Button("Run")
     app.click(fn=lambda x: x.upper(), inputs=inp, outputs=out)
 
 app.launch()
 ```
 
-## 📦 Components
+## Components
 
 | Component | Description |
 |-----------|-------------|
-| `Textbox` | Text input (single/multi line) |
-| `Number` | Numeric input with +/- buttons |
+| `Textbox` | Single/multi-line text input |
+| `Number` | Numeric input with +/- controls |
 | `Slider` | Range slider |
 | `Checkbox` | Boolean toggle |
 | `Dropdown` | Selection dropdown |
 | `Radio` | Radio button group |
 | `Button` | Clickable button |
-| `Image` | Image upload/display |
-| `Audio` | Audio upload/playback |
-| `Video` | Video upload/playback |
+| `Image` | Image upload with drag & drop |
+| `Audio` | Audio upload & playback |
+| `Video` | Video upload & playback |
 | `File` | File upload |
-| `Dataframe` | Tabular data |
+| `Dataframe` | Tabular data display |
 | `Markdown` | Markdown renderer |
 | `HTML` | Raw HTML display |
-| `Chatbot` | Chat interface |
+| `Chatbot` | Chat message interface |
 | `State` | Hidden state storage |
+| `ColorPicker` | Color picker with hex input |
+| `DateTime` | Date/time picker |
+| `Code` | Code editor with monospace font |
+| `Gallery` | Image gallery grid |
+| `Label` | Classification labels with confidence bars |
+| `HighlightedText` | Text with labeled spans (NER, sentiment) |
+| `JSON` | JSON viewer |
+| `Progress` | Progress bar |
 
-## 🎨 UI Features
+## Layout (Blocks)
 
-- **Dark mode** by default with light mode toggle
-- **Glassmorphism** cards with backdrop blur
-- **Smooth 60fps** animations and transitions
-- **Responsive** design for all screen sizes
-- **Toast notifications** for errors
-- **Gradient branding** with deep purple (#7c3aed) primary
+```python
+with olapp.Blocks(title="Complex App") as app:
+    with olapp.Row():
+        with olapp.Column():
+            inp = olapp.Textbox(label="Input")
+        with olapp.Column():
+            out = olapp.Textbox(label="Output")
 
-## 🤖 HuggingFace Spaces
+    with olapp.Group():
+        btn = olapp.Button("Process")
+        app.click(fn=process, inputs=inp, outputs=out)
 
-Create an `app.py` at the root:
+    with olapp.Tabs():
+        with olapp.Tab("Results"):
+            olapp.Markdown(value="Results here")
+        with olapp.Tab("Settings"):
+            olapp.Slider(label="Threshold", minimum=0, maximum=1, value=0.5)
+```
+
+## HuggingFace Spaces
+
+Create `app.py`:
 
 ```python
 import olapp
@@ -100,15 +117,24 @@ import olapp
 def predict(text):
     return text[::-1]
 
-app = olapp.Interface(fn=predict, inputs="textbox", outputs="textbox", title="🔄 Reverser")
+app = olapp.Interface(fn=predict, inputs="textbox", outputs="textbox", title="Reverser")
 app.launch(server_name="0.0.0.0", server_port=7860)
 ```
 
-Add `requirements.txt`:
+`requirements.txt`:
 ```
 olapp
 ```
 
-## 📄 License
+## Development
 
-MIT License — see [LICENSE](LICENSE).
+```bash
+git clone https://github.com/Atum246/olapp.git
+cd olapp
+pip install -e .
+python -m pytest tests/ -v
+```
+
+## License
+
+MIT
