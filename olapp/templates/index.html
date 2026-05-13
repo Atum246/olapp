@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/static/olapp.css">
+</head>
+<body>
+    <div class="olapp-page">
+        <header class="olapp-header">
+            <div class="olapp-header-inner">
+                <a class="olapp-logo" href="/">
+                    <div class="olapp-logo-mark">O</div>
+                    <span class="olapp-logo-text">Olapp</span>
+                </a>
+                <div class="olapp-header-actions">
+                    <button class="olapp-btn olapp-btn-icon olapp-btn-ghost" id="theme-toggle" title="Toggle theme" aria-label="Toggle theme">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="olapp-main">
+            <div class="olapp-container">
+                <div id="olapp-title-section" class="olapp-title-section" style="display:none">
+                    <h1 class="olapp-title" id="olapp-title"></h1>
+                    <p class="olapp-description" id="olapp-description"></p>
+                </div>
+
+                <div id="olapp-interface" class="olapp-interface" style="display:none">
+                    <div class="olapp-card">
+                        <div class="olapp-card-header">
+                            <h2>Input</h2>
+                        </div>
+                        <div class="olapp-card-body" id="olapp-inputs"></div>
+                        <div class="olapp-card-footer">
+                            <button class="olapp-btn olapp-btn-primary olapp-btn-lg" id="olapp-submit">
+                                <span class="btn-text">Run</span>
+                                <span class="btn-spinner" style="display:none">
+                                    <span class="olapp-spinner"></span>
+                                    <span>Running...</span>
+                                </span>
+                            </button>
+                            <button class="olapp-btn olapp-btn-secondary" id="olapp-clear">Clear</button>
+                        </div>
+                    </div>
+                    <div class="olapp-card">
+                        <div class="olapp-card-header">
+                            <h2>Output</h2>
+                        </div>
+                        <div class="olapp-card-body" id="olapp-outputs">
+                            <div class="olapp-empty">Submit to see results</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="olapp-blocks" class="olapp-blocks" style="display:none"></div>
+
+                <div id="olapp-loading" class="olapp-loading">
+                    <div class="olapp-spinner"></div>
+                    <p>Loading...</p>
+                </div>
+            </div>
+        </main>
+
+        <footer class="olapp-footer">
+            <div class="olapp-footer-inner">
+                <span>Built with <strong>Olapp</strong></span>
+                <div class="olapp-footer-links">
+                    <a href="https://github.com/olapp-ai/olapp" target="_blank" rel="noopener">GitHub</a>
+                    <a href="https://pypi.org/project/olapp/" target="_blank" rel="noopener">PyPI</a>
+                </div>
+            </div>
+        </footer>
+
+        <div id="olapp-toast-container" class="olapp-toast-container"></div>
+    </div>
+
+    <script src="/static/olapp.js"></script>
+</body>
+</html>

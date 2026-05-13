@@ -1,0 +1,1287 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   OLAPP — Professional UI
+   Clean, functional, purposeful. Not flashy — just good.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ─── Design Tokens ────────────────────────────────────────────────── */
+:root {
+    /* Primary — restrained, professional */
+    --olapp-primary: #6366f1;
+    --olapp-primary-hover: #4f46e5;
+    --olapp-primary-active: #4338ca;
+    --olapp-primary-subtle: #eef2ff;
+    --olapp-primary-ring: rgba(99, 102, 241, 0.2);
+
+    /* Semantic colors */
+    --olapp-success: #059669;
+    --olapp-success-subtle: #ecfdf5;
+    --olapp-warning: #d97706;
+    --olapp-warning-subtle: #fffbeb;
+    --olapp-error: #dc2626;
+    --olapp-error-subtle: #fef2f2;
+    --olapp-info: #0284c7;
+    --olapp-info-subtle: #f0f9ff;
+
+    /* Neutrals — the backbone */
+    --olapp-white: #ffffff;
+    --olapp-gray-50: #f9fafb;
+    --olapp-gray-100: #f3f4f6;
+    --olapp-gray-200: #e5e7eb;
+    --olapp-gray-300: #d1d5db;
+    --olapp-gray-400: #9ca3af;
+    --olapp-gray-500: #6b7280;
+    --olapp-gray-600: #4b5563;
+    --olapp-gray-700: #374151;
+    --olapp-gray-800: #1f2937;
+    --olapp-gray-900: #111827;
+    --olapp-gray-950: #030712;
+
+    /* Surfaces */
+    --olapp-bg: var(--olapp-white);
+    --olapp-bg-secondary: var(--olapp-gray-50);
+    --olapp-bg-tertiary: var(--olapp-gray-100);
+    --olapp-surface: var(--olapp-white);
+    --olapp-surface-border: var(--olapp-gray-200);
+    --olapp-surface-hover: var(--olapp-gray-50);
+
+    /* Text */
+    --olapp-text: var(--olapp-gray-900);
+    --olapp-text-secondary: var(--olapp-gray-600);
+    --olapp-text-muted: var(--olapp-gray-400);
+    --olapp-text-inverse: var(--olapp-white);
+
+    /* Spacing — 4px base */
+    --olapp-space-1: 4px;
+    --olapp-space-2: 8px;
+    --olapp-space-3: 12px;
+    --olapp-space-4: 16px;
+    --olapp-space-5: 20px;
+    --olapp-space-6: 24px;
+    --olapp-space-7: 32px;
+    --olapp-space-8: 40px;
+    --olapp-space-9: 48px;
+    --olapp-space-10: 64px;
+
+    /* Typography */
+    --olapp-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+    --olapp-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
+
+    /* Sizes */
+    --olapp-text-xs: 0.75rem;
+    --olapp-text-sm: 0.8125rem;
+    --olapp-text-base: 0.875rem;
+    --olapp-text-lg: 1rem;
+    --olapp-text-xl: 1.125rem;
+    --olapp-text-2xl: 1.5rem;
+    --olapp-text-3xl: 1.875rem;
+
+    /* Borders */
+    --olapp-radius-sm: 6px;
+    --olapp-radius: 8px;
+    --olapp-radius-lg: 12px;
+    --olapp-radius-full: 9999px;
+    --olapp-border: 1px solid var(--olapp-surface-border);
+
+    /* Shadows — subtle, not dramatic */
+    --olapp-shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+    --olapp-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+    --olapp-shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+    --olapp-shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+
+    /* Transitions — fast, functional */
+    --olapp-ease: cubic-bezier(0.4, 0, 0.2, 1);
+    --olapp-transition: 150ms var(--olapp-ease);
+    --olapp-transition-slow: 250ms var(--olapp-ease);
+}
+
+/* ─── Dark Theme ───────────────────────────────────────────────────── */
+[data-theme="dark"] {
+    --olapp-primary: #818cf8;
+    --olapp-primary-hover: #6366f1;
+    --olapp-primary-active: #4f46e5;
+    --olapp-primary-subtle: rgba(99, 102, 241, 0.1);
+    --olapp-primary-ring: rgba(129, 140, 248, 0.2);
+
+    --olapp-success-subtle: rgba(5, 150, 105, 0.1);
+    --olapp-warning-subtle: rgba(217, 119, 6, 0.1);
+    --olapp-error-subtle: rgba(220, 38, 38, 0.1);
+    --olapp-info-subtle: rgba(2, 132, 199, 0.1);
+
+    --olapp-bg: var(--olapp-gray-950);
+    --olapp-bg-secondary: var(--olapp-gray-900);
+    --olapp-bg-tertiary: var(--olapp-gray-800);
+    --olapp-surface: var(--olapp-gray-900);
+    --olapp-surface-border: var(--olapp-gray-800);
+    --olapp-surface-hover: var(--olapp-gray-800);
+
+    --olapp-text: var(--olapp-gray-50);
+    --olapp-text-secondary: var(--olapp-gray-400);
+    --olapp-text-muted: var(--olapp-gray-500);
+
+    --olapp-shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
+    --olapp-shadow: 0 1px 3px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.3);
+    --olapp-shadow-md: 0 4px 6px -1px rgba(0,0,0,0.4), 0 2px 4px -2px rgba(0,0,0,0.3);
+    --olapp-shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.4), 0 4px 6px -4px rgba(0,0,0,0.3);
+}
+
+/* ─── Reset ────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-size-adjust: 100%;
+}
+
+body {
+    font-family: var(--olapp-font);
+    background: var(--olapp-bg);
+    color: var(--olapp-text);
+    line-height: 1.5;
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-size: var(--olapp-text-base);
+}
+
+/* ─── Animations — minimal, purposeful ─────────────────────────────── */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes toastIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes toastOut {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(100%); opacity: 0; }
+}
+
+/* ─── Layout ───────────────────────────────────────────────────────── */
+.olapp-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.olapp-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--olapp-bg);
+    border-bottom: var(--olapp-border);
+    padding: 0 var(--olapp-space-6);
+    height: 56px;
+    display: flex;
+    align-items: center;
+}
+
+.olapp-header-inner {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.olapp-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--olapp-space-2);
+    text-decoration: none;
+    color: var(--olapp-text);
+}
+
+.olapp-logo-mark {
+    width: 28px;
+    height: 28px;
+    background: var(--olapp-primary);
+    border-radius: var(--olapp-radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.olapp-logo-text {
+    font-size: var(--olapp-text-lg);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+.olapp-header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--olapp-space-2);
+}
+
+.olapp-main {
+    flex: 1;
+    padding: var(--olapp-space-8) var(--olapp-space-6);
+}
+
+.olapp-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ─── Title Section ────────────────────────────────────────────────── */
+.olapp-title-section {
+    text-align: center;
+    margin-bottom: var(--olapp-space-9);
+}
+
+.olapp-title {
+    font-size: var(--olapp-text-3xl);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    color: var(--olapp-text);
+    margin-bottom: var(--olapp-space-2);
+}
+
+.olapp-description {
+    font-size: var(--olapp-text-lg);
+    color: var(--olapp-text-secondary);
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* ─── Interface Layout ─────────────────────────────────────────────── */
+.olapp-interface {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--olapp-space-6);
+    align-items: start;
+}
+
+@media (max-width: 768px) {
+    .olapp-interface {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ─── Cards ────────────────────────────────────────────────────────── */
+.olapp-card {
+    background: var(--olapp-surface);
+    border: var(--olapp-border);
+    border-radius: var(--olapp-radius-lg);
+    overflow: hidden;
+}
+
+.olapp-card-header {
+    padding: var(--olapp-space-4) var(--olapp-space-5);
+    border-bottom: var(--olapp-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.olapp-card-header h2 {
+    font-size: var(--olapp-text-sm);
+    font-weight: 600;
+    color: var(--olapp-text);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.olapp-card-body {
+    padding: var(--olapp-space-5);
+}
+
+.olapp-card-footer {
+    padding: var(--olapp-space-4) var(--olapp-space-5);
+    border-top: var(--olapp-border);
+    display: flex;
+    align-items: center;
+    gap: var(--olapp-space-3);
+    background: var(--olapp-bg-secondary);
+}
+
+/* ─── Buttons ──────────────────────────────────────────────────────── */
+.olapp-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--olapp-space-2);
+    padding: 9px var(--olapp-space-4);
+    border: 1px solid transparent;
+    border-radius: var(--olapp-radius);
+    font-family: var(--olapp-font);
+    font-size: var(--olapp-text-base);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--olapp-transition);
+    outline: none;
+    line-height: 1.25;
+    white-space: nowrap;
+    user-select: none;
+}
+
+.olapp-btn:focus-visible {
+    box-shadow: 0 0 0 2px var(--olapp-bg), 0 0 0 4px var(--olapp-primary-ring);
+}
+
+.olapp-btn-primary {
+    background: var(--olapp-primary);
+    color: var(--olapp-text-inverse);
+    border-color: var(--olapp-primary);
+}
+
+.olapp-btn-primary:hover {
+    background: var(--olapp-primary-hover);
+    border-color: var(--olapp-primary-hover);
+}
+
+.olapp-btn-primary:active {
+    background: var(--olapp-primary-active);
+}
+
+.olapp-btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.olapp-btn-secondary {
+    background: var(--olapp-surface);
+    color: var(--olapp-text);
+    border-color: var(--olapp-surface-border);
+}
+
+.olapp-btn-secondary:hover {
+    background: var(--olapp-surface-hover);
+}
+
+.olapp-btn-ghost {
+    background: transparent;
+    color: var(--olapp-text-secondary);
+    padding: var(--olapp-space-2);
+    border-radius: var(--olapp-radius-sm);
+}
+
+.olapp-btn-ghost:hover {
+    color: var(--olapp-text);
+    background: var(--olapp-surface-hover);
+}
+
+.olapp-btn-lg {
+    padding: 11px var(--olapp-space-6);
+    font-size: var(--olapp-text-lg);
+}
+
+.olapp-btn-sm {
+    padding: 5px var(--olapp-space-3);
+    font-size: var(--olapp-text-sm);
+}
+
+.olapp-btn-icon {
+    padding: 0;
+    width: 32px;
+    height: 32px;
+}
+
+/* ─── Form Components ──────────────────────────────────────────────── */
+.olapp-component {
+    margin-bottom: var(--olapp-space-5);
+}
+
+.olapp-component:last-child {
+    margin-bottom: 0;
+}
+
+.olapp-label {
+    display: block;
+    font-size: var(--olapp-text-sm);
+    font-weight: 500;
+    color: var(--olapp-text);
+    margin-bottom: 6px;
+}
+
+.olapp-label-hint {
+    font-weight: 400;
+    color: var(--olapp-text-muted);
+    margin-left: var(--olapp-space-1);
+}
+
+/* ─── Text Input ───────────────────────────────────────────────────── */
+.olapp-input {
+    width: 100%;
+    padding: 9px var(--olapp-space-3);
+    background: var(--olapp-bg);
+    border: var(--olapp-border);
+    border-radius: var(--olapp-radius);
+    color: var(--olapp-text);
+    font-family: var(--olapp-font);
+    font-size: var(--olapp-text-base);
+    line-height: 1.25;
+    transition: border-color var(--olapp-transition), box-shadow var(--olapp-transition);
+    outline: none;
+}
+
+.olapp-input::placeholder {
+    color: var(--olapp-text-muted);
+}
+
+.olapp-input:hover {
+    border-color: var(--olapp-gray-300);
+}
+
+[data-theme="dark"] .olapp-input:hover {
+    border-color: var(--olapp-gray-600);
+}
+
+.olapp-input:focus {
+    border-color: var(--olapp-primary);
+    box-shadow: 0 0 0 3px var(--olapp-primary-ring);
+}
+
+.olapp-textarea {
+    width: 100%;
+    padding: var(--olapp-space-3);
+    background: var(--olapp-bg);
+    border: var(--olapp-border);
+    border-radius: var(--olapp-radius);
+    color: var(--olapp-text);
+    font-family: var(--olapp-font);
+    font-size: var(--olapp-text-base);
+    line-height: 1.5;
+    resize: vertical;
+    min-height: 80px;
+    transition: border-color var(--olapp-transition), box-shadow var(--olapp-transition);
+    outline: none;
+}
+
+.olapp-textarea::placeholder {
+    color: var(--olapp-text-muted);
+}
+
+.olapp-textarea:focus {
+    border-color: var(--olapp-primary);
+    box-shadow: 0 0 0 3px var(--olapp-primary-ring);
+}
+
+/* ─── Select ───────────────────────────────────────────────────────── */
+.olapp-select {
+    width: 100%;
+    padding: 9px var(--olapp-space-8) 9px var(--olapp-space-3);
+    background: var(--olapp-bg);
+    border: var(--olapp-border);
+    border-radius: var(--olapp-radius);
+    color: var(--olapp-text);
+    font-family: var(--olapp-font);
+    font-size: var(--olapp-text-base);
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%236b7280' viewBox='0 0 16 16'%3E%3Cpath d='M4.646 5.646a.5.5 0 0 1 .708 0L8 8.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    transition: border-color var(--olapp-transition), box-shadow var(--olapp-transition);
+    outline: none;
+}
+
+.olapp-select:focus {
+    border-color: var(--olapp-primary);
+    box-shadow: 0 0 0 3px var(--olapp-primary-ring);
+}
+
+/* ─── Number Input ─────────────────────────────────────────────────── */
+.olapp-number-group {
+    display: flex;
+    align-items: stretch;
+}
+
+.olapp-number-btn {
+    width: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--olapp-bg-secondary);
+    border: var(--olapp-border);
+    color: var(--olapp-text-secondary);
+    cursor: pointer;
+    font-size: var(--olapp-text-lg);
+    transition: all var(--olapp-transition);
+    user-select: none;
+}
+
+.olapp-number-btn:first-child {
+    border-radius: var(--olapp-radius) 0 0 var(--olapp-radius);
+    border-right: none;
+}
+
+.olapp-number-btn:last-child {
+    border-radius: 0 var(--olapp-radius) var(--olapp-radius) 0;
+    border-left: none;
+}
+
+.olapp-number-btn:hover {
+    background: var(--olapp-surface-hover);
+    color: var(--olapp-text);
+}
+
+.olapp-number-group .olapp-input {
+    border-radius: 0;
+    text-align: center;
+    -moz-appearance: textfield;
+}
+
+.olapp-number-group .olapp-input::-webkit-inner-spin-button,
+.olapp-number-group .olapp-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+/* ─── Slider ───────────────────────────────────────────────────────── */
+.olapp-slider-container {
+    display: flex;
+    align-items: center;
+    gap: var(--olapp-space-3);
+}
+
+.olapp-slider {
+    flex: 1;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 4px;
+    background: var(--olapp-gray-200);
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+}
+
+[data-theme="dark"] .olapp-slider {
+    background: var(--olapp-gray-700);
+}
+
+.olapp-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--olapp-primary);
+    cursor: pointer;
+    border: 2px solid var(--olapp-bg);
+    box-shadow: var(--olapp-shadow-sm);
+    transition: transform var(--olapp-transition);
+}
+
+.olapp-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+}
+
+.olapp-slider::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--olapp-primary);
+    cursor: pointer;
+    border: 2px solid var(--olapp-bg);
+    box-shadow: var(--olapp-shadow-sm);
+}
+
+.olapp-slider-value {
+    min-width: 40px;
+    text-align: right;
+    font-size: var(--olapp-text-sm);
+    font-weight: 500;
+    color: var(--olapp-text-secondary);
+    font-family: var(--olapp-mono);
+    font-variant-numeric: tabular-nums;
+}
+
+/* ─── Checkbox ─────────────────────────────────────────────────────── */
+.olapp-checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: var(--olapp-space-2);
+    cursor: pointer;
+    padding: var(--olapp-space-2) 0;
+}
+
+.olapp-checkbox {
+    width: 16px;
+    height: 16px;
+    border: var(--olapp-border);
+    border-radius: 4px;
+    cursor: pointer;
+    appearance: none;
+    background: var(--olapp-bg);
+    transition: all var(--olapp-transition);
+    position: relative;
+    flex-shrink: 0;
+}
+
+.olapp-checkbox:checked {
+    background: var(--olapp-primary);
+    border-color: var(--olapp-primary);
+}
+
+.olapp-checkbox:checked::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 5px;
+    width: 4px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.olapp-checkbox:focus-visible {
+    box-shadow: 0 0 0 2px var(--olapp-bg), 0 0 0 4px var(--olapp-primary-ring);
+}
+
+/* ─── Radio ────────────────────────────────────────────────────────── */
+.olapp-radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--olapp-space-2);
+}
+
+.olapp-radio-option {
+    display: flex;
+    align-items: center;
+    gap: var(--olapp-space-3);
+    padding: var(--olapp-space-3) var(--olapp-space-4);
+    background: var(--olapp-bg);
+    border: var(--olapp-border);
+    border-radius: var(--olapp-radius);
+    cursor: pointer;
+    transition: all var(--olapp-transition);
+    font-size: var(--olapp-text-base);
+}
+
+.olapp-radio-option:hover {
+    border-color: var(--olapp-primary);
+}
+
+.olapp-radio-option.active {
+    border-color: var(--olapp-primary);
+    background: var(--olapp-primary-subtle);
+}
+
+.olapp-radio {
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--olapp-gray-300);
+    border-radius: 50%;
+    appearance: none;
+    cursor: pointer;
+    transition: all var(--olapp-transition);
+    position: relative;
+    flex-shrink: 0;
+}
+
+[data-theme="dark"] .olapp-radio {
+    border-color: var(--olapp-gray-600);
+}
+
+.olapp-radio:checked {
+    border-color: var(--olapp-primary);
+}
+
+.olapp-radio:checked::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--olapp-primary);
+}
+
+/* ─── Image ────────────────────────────────────────────────────────── */
+.olapp-image-container {
+    border: 2px dashed var(--olapp-surface-border);
+    border-radius: var(--olapp-radius);
+    padding: var(--olapp-space-8) var(--olapp-space-6);
+    text-align: center;
+    cursor: pointer;
+    transition: all var(--olapp-transition);
+    min-height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: var(--olapp-space-3);
+}
+
+.olapp-image-container:hover {
+    border-color: var(--olapp-primary);
+    background: var(--olapp-primary-subtle);
+}
+
+.olapp-image-container.has-image {
+    padding: var(--olapp-space-2);
+    border-style: solid;
+}
+
+.olapp-image-container img {
+    max-width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    border-radius: var(--olapp-radius-sm);
+}
+
+.olapp-image-placeholder-icon {
+    font-size: 2rem;
+    color: var(--olapp-text-muted);
+}
+
+.olapp-image-placeholder-text {
+    font-size: var(--olapp-text-sm);
+    color: var(--olapp-text-muted);
+}
+
+.olapp-image-placeholder-hint {
+    font-size: var(--olapp-text-xs);
+    color: var(--olapp-text-muted);
+}
+
+/* ─── Audio & Video ────────────────────────────────────────────────── */
+.olapp-audio-container,
+.olapp-video-container {
+    background: var(--olapp-bg-secondary);
+    border: var(--olapp-border);
+    border-radius: var(--olapp-radius);
+    padding: var(--olapp-space-4);
+}
+
+.olapp-audio-container audio,
+.olapp-video-container video {
+    width: 100%;
+    border-radius: var(--olapp-radius-sm);
+}
+
+/* ─── File Upload ──────────────────────────────────────────────────── */
+.olapp-file-container {
+    border: 2px dashed var(--olapp-surface-border);
+    border-radius: var(--olapp-radius);
+    padding: var(--olapp-space-6);
+    text-align: center;
+    cursor: pointer;
+    transition: all var(--olapp-transition);
+}
+
+.olapp-file-container:hover {
+    border-color: var(--olapp-primary);
+    background: var(--olapp-primary-subtle);
+}
+
+/* ─── Dataframe ────────────────────────────────────────────────────── */
+.olapp-dataframe-wrapper {
+    overflow-x: auto;
+    border: var(--olapp-border);
+    border-radius: var(--olapp-radius);
+}
+
+.olapp-dataframe {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--olapp-text-sm);
+}
+
+.olapp-dataframe th {
+    padding: var(--olapp-space-3) var(--olapp-space-4);
+    background: var(--olapp-bg-secondary);
+    text-align: left;
+    font-weight: 600;
+    color: var(--olapp-text-secondary);
+    font-size: var(--olapp-text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: var(--olapp-border);
+    white-space: nowrap;
+}
+
+.olapp-dataframe td {
+    padding: var(--olapp-space-3) var(--olapp-space-4);
+    border-bottom: 1px solid var(--olapp-surface-border);
+    color: var(--olapp-text);
+    white-space: nowrap;
+}
+
+.olapp-dataframe tr:last-child td {
+    border-bottom: none;
+}
+
+.olapp-dataframe tr:hover td {
+    background: var(--olapp-surface-hover);
+}
+
+/* ─── Markdown ─────────────────────────────────────────────────────── */
+.olapp-markdown {
+    line-height: 1.7;
+    color: var(--olapp-text);
+    font-size: var(--olapp-text-base);
+}
+
+.olapp-markdown h1, .olapp-markdown h2, .olapp-markdown h3 {
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--olapp-text);
+}
+
+.olapp-markdown h1 { font-size: var(--olapp-text-2xl); }
+.olapp-markdown h2 { font-size: var(--olapp-text-xl); }
+.olapp-markdown h3 { font-size: var(--olapp-text-lg); }
+
+.olapp-markdown p { margin-bottom: 1em; }
+
+.olapp-markdown code {
+    background: var(--olapp-bg-secondary);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: var(--olapp-mono);
+    font-size: 0.85em;
+}
+
+.olapp-markdown pre {
+    background: var(--olapp-bg-secondary);
+    border: var(--olapp-border);
+    border-radius: var(--olapp-radius);
+    padding: var(--olapp-space-4);
+    overflow-x: auto;
+    margin-bottom: 1em;
+}
+
+.olapp-markdown pre code {
+    background: none;
+    padding: 0;
+}
+
+.olapp-markdown ul, .olapp-markdown ol {
+    padding-left: 1.5em;
+    margin-bottom: 1em;
+}
+
+.olapp-markdown li { margin-bottom: 0.25em; }
+
+.olapp-markdown a {
+    color: var(--olapp-primary);
+    text-decoration: none;
+}
+
+.olapp-markdown a:hover {
+    text-decoration: underline;
+}
+
+.olapp-markdown blockquote {
+    border-left: 3px solid var(--olapp-primary);
+    padding-left: var(--olapp-space-4);
+    color: var(--olapp-text-secondary);
+    margin-bottom: 1em;
+}
+
+/* ─── Chatbot ──────────────────────────────────────────────────────── */
+.olapp-chatbot {
+    display: flex;
+    flex-direction: column;
+    gap: var(--olapp-space-4);
+}
+
+.olapp-chatbot-messages {
+    display: flex;
+    flex-direction: column;
+    gap: var(--olapp-space-4);
+    max-height: 400px;
+    overflow-y: auto;
+    padding: var(--olapp-space-4);
+    background: var(--olapp-bg-secondary);
+    border: var(--olapp-border);
+    border-radius: var(--olapp-radius);
+}
+
+.olapp-chatbot-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.olapp-chatbot-messages::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.olapp-chatbot-messages::-webkit-scrollbar-thumb {
+    background: var(--olapp-gray-300);
+    border-radius: 3px;
+}
+
+[data-theme="dark"] .olapp-chatbot-messages::-webkit-scrollbar-thumb {
+    background: var(--olapp-gray-600);
+}
+
+.olapp-chat-message {
+    display: flex;
+    gap: var(--olapp-space-3);
+    max-width: 85%;
+}
+
+.olapp-chat-message.user {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+
+.olapp-chat-message.bot {
+    align-self: flex-start;
+}
+
+.olapp-chat-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    flex-shrink: 0;
+}
+
+.olapp-chat-message.user .olapp-chat-avatar {
+    background: var(--olapp-primary);
+    color: white;
+}
+
+.olapp-chat-message.bot .olapp-chat-avatar {
+    background: var(--olapp-gray-200);
+    color: var(--olapp-gray-600);
+}
+
+[data-theme="dark"] .olapp-chat-message.bot .olapp-chat-avatar {
+    background: var(--olapp-gray-700);
+    color: var(--olapp-gray-300);
+}
+
+.olapp-chat-bubble {
+    padding: var(--olapp-space-3) var(--olapp-space-4);
+    border-radius: var(--olapp-radius-lg);
+    font-size: var(--olapp-text-base);
+    line-height: 1.5;
+}
+
+.olapp-chat-message.user .olapp-chat-bubble {
+    background: var(--olapp-primary);
+    color: white;
+    border-bottom-right-radius: 4px;
+}
+
+.olapp-chat-message.bot .olapp-chat-bubble {
+    background: var(--olapp-bg);
+    border: var(--olapp-border);
+    border-bottom-left-radius: 4px;
+}
+
+.olapp-chatbot-input {
+    display: flex;
+    gap: var(--olapp-space-2);
+}
+
+.olapp-chatbot-input .olapp-input {
+    flex: 1;
+}
+
+/* ─── Spinner ──────────────────────────────────────────────────────── */
+.olapp-spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--olapp-gray-200);
+    border-top-color: var(--olapp-primary);
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+}
+
+.olapp-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--olapp-space-10);
+    gap: var(--olapp-space-4);
+    color: var(--olapp-text-muted);
+}
+
+.olapp-loading .olapp-spinner {
+    width: 32px;
+    height: 32px;
+    border-width: 3px;
+}
+
+/* ─── Toasts ───────────────────────────────────────────────────────── */
+.olapp-toast-container {
+    position: fixed;
+    top: var(--olapp-space-4);
+    right: var(--olapp-space-4);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: var(--olapp-space-2);
+    pointer-events: none;
+}
+
+.olapp-toast {
+    background: var(--olapp-surface);
+    border: var(--olapp-border);
+    border-radius: var(--olapp-radius);
+    padding: var(--olapp-space-3) var(--olapp-space-4);
+    min-width: 280px;
+    max-width: 420px;
+    box-shadow: var(--olapp-shadow-lg);
+    animation: toastIn var(--olapp-transition-slow);
+    pointer-events: all;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--olapp-space-3);
+    font-size: var(--olapp-text-sm);
+}
+
+.olapp-toast.removing {
+    animation: toastOut var(--olapp-transition-slow);
+}
+
+.olapp-toast-icon {
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.olapp-toast-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.olapp-toast-title {
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.olapp-toast-message {
+    color: var(--olapp-text-secondary);
+}
+
+.olapp-toast-close {
+    background: none;
+    border: none;
+    color: var(--olapp-text-muted);
+    cursor: pointer;
+    padding: 2px;
+    font-size: var(--olapp-text-lg);
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.olapp-toast-close:hover {
+    color: var(--olapp-text);
+}
+
+.olapp-toast.error { border-left: 3px solid var(--olapp-error); }
+.olapp-toast.success { border-left: 3px solid var(--olapp-success); }
+.olapp-toast.warning { border-left: 3px solid var(--olapp-warning); }
+.olapp-toast.info { border-left: 3px solid var(--olapp-info); }
+
+/* ─── Blocks Layout ────────────────────────────────────────────────── */
+.olapp-blocks {
+    animation: fadeIn var(--olapp-transition-slow);
+}
+
+.olapp-block.row {
+    display: flex;
+    gap: var(--olapp-space-5);
+    margin-bottom: var(--olapp-space-5);
+}
+
+.olapp-block.row > * {
+    flex: 1;
+    min-width: 0;
+}
+
+.olapp-block.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.olapp-block.group {
+    background: var(--olapp-surface);
+    border: var(--olapp-border);
+    border-radius: var(--olapp-radius-lg);
+    padding: var(--olapp-space-5);
+    margin-bottom: var(--olapp-space-5);
+}
+
+/* ─── Tabs ─────────────────────────────────────────────────────────── */
+.olapp-tabs-nav {
+    display: flex;
+    border-bottom: var(--olapp-border);
+    gap: 0;
+    margin-bottom: var(--olapp-space-5);
+}
+
+.olapp-tab-btn {
+    padding: var(--olapp-space-3) var(--olapp-space-4);
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--olapp-text-secondary);
+    font-family: var(--olapp-font);
+    font-size: var(--olapp-text-sm);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--olapp-transition);
+    margin-bottom: -1px;
+}
+
+.olapp-tab-btn:hover {
+    color: var(--olapp-text);
+}
+
+.olapp-tab-btn.active {
+    color: var(--olapp-primary);
+    border-bottom-color: var(--olapp-primary);
+}
+
+/* ─── Accordion ────────────────────────────────────────────────────── */
+.olapp-accordion {
+    border: var(--olapp-border);
+    border-radius: var(--olapp-radius);
+    margin-bottom: var(--olapp-space-3);
+}
+
+.olapp-accordion-header {
+    padding: var(--olapp-space-3) var(--olapp-space-4);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    background: var(--olapp-bg-secondary);
+    border-radius: var(--olapp-radius);
+    font-weight: 500;
+    font-size: var(--olapp-text-sm);
+    user-select: none;
+    transition: background var(--olapp-transition);
+}
+
+.olapp-accordion-header:hover {
+    background: var(--olapp-surface-hover);
+}
+
+.olapp-accordion-arrow {
+    transition: transform var(--olapp-transition);
+    color: var(--olapp-text-muted);
+    font-size: 12px;
+}
+
+.olapp-accordion.open .olapp-accordion-arrow {
+    transform: rotate(180deg);
+}
+
+.olapp-accordion-body {
+    padding: var(--olapp-space-4);
+    border-top: var(--olapp-border);
+    display: none;
+}
+
+.olapp-accordion.open .olapp-accordion-body {
+    display: block;
+}
+
+/* ─── Footer ───────────────────────────────────────────────────────── */
+.olapp-footer {
+    border-top: var(--olapp-border);
+    padding: var(--olapp-space-5) var(--olapp-space-6);
+    background: var(--olapp-bg-secondary);
+}
+
+.olapp-footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: var(--olapp-text-sm);
+    color: var(--olapp-text-secondary);
+}
+
+.olapp-footer a {
+    color: var(--olapp-text-secondary);
+    text-decoration: none;
+}
+
+.olapp-footer a:hover {
+    color: var(--olapp-text);
+}
+
+.olapp-footer-links {
+    display: flex;
+    gap: var(--olapp-space-4);
+}
+
+/* ─── Responsive ───────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+    .olapp-header {
+        padding: 0 var(--olapp-space-4);
+    }
+
+    .olapp-main {
+        padding: var(--olapp-space-5) var(--olapp-space-4);
+    }
+
+    .olapp-title {
+        font-size: var(--olapp-text-2xl);
+    }
+
+    .olapp-description {
+        font-size: var(--olapp-text-base);
+    }
+
+    .olapp-card-body {
+        padding: var(--olapp-space-4);
+    }
+
+    .olapp-card-footer {
+        flex-wrap: wrap;
+    }
+
+    .olapp-footer-inner {
+        flex-direction: column;
+        gap: var(--olapp-space-3);
+        text-align: center;
+    }
+
+    .olapp-toast {
+        min-width: auto;
+        left: var(--olapp-space-4);
+        right: var(--olapp-space-4);
+    }
+}
+
+/* ─── Utilities ────────────────────────────────────────────────────── */
+.hidden { display: none !important; }
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
