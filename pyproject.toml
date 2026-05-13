@@ -7,7 +7,7 @@ name = "olapp"
 dynamic = ["version"]
 description = "A modern alternative to Gradio with stunning UI"
 readme = "README.md"
-license = {text = "MIT"}
+license = "MIT"
 requires-python = ">=3.8"
 authors = [
     {name = "Olapp Team", email = "hello@olapp.dev"},
@@ -16,7 +16,6 @@ keywords = ["gradio", "ui", "web", "ml", "machine-learning", "demo"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.8",
@@ -38,10 +37,10 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/olapp/olapp"
-Documentation = "https://github.com/olapp/olapp#readme"
-Repository = "https://github.com/olapp/olapp"
-Issues = "https://github.com/olapp/olapp/issues"
+Homepage = "https://github.com/Atum246/olapp"
+Documentation = "https://github.com/Atum246/olapp#readme"
+Repository = "https://github.com/Atum246/olapp"
+Issues = "https://github.com/Atum246/olapp/issues"
 
 [tool.setuptools.dynamic]
 version = {attr = "olapp.version.__version__"}
