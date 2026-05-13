@@ -7,7 +7,7 @@ name = "olapp"
 dynamic = ["version"]
 description = "A modern alternative to Gradio with stunning UI"
 readme = "README.md"
-license = "MIT"
+license = {text = "MIT"}
 requires-python = ">=3.8"
 authors = [
     {name = "Olapp Team", email = "hello@olapp.dev"},
