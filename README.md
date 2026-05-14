@@ -1,11 +1,23 @@
-# Olapp
+<p align="center">
+  <img src="logo-horizontal.png" alt="olapp" width="400">
+</p>
 
-**A modern alternative to Gradio. Build ML demos and web apps with Python.**
+<p align="center">
+  <strong>A modern alternative to Gradio. Build ML demos and web apps with Python.</strong>
+</p>
 
-[![PyPI](https://img.shields.io/pypi/v/olapp?style=flat-square)](https://pypi.org/project/olapp/)
-[![Python](https://img.shields.io/pypi/pyversions/olapp?style=flat-square)](https://pypi.org/project/olapp/)
-[![License: MIT](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
-[![Tests](https://img.shields.io/badge/tests-114%20passed-brightgreen?style=flat-square)](#)
+<p align="center">
+  <a href="https://pypi.org/project/olapp/"><img src="https://img.shields.io/pypi/v/olapp?style=flat-square" alt="PyPI"></a>
+  <a href="https://pypi.org/project/olapp/"><img src="https://img.shields.io/pypi/pyversions/olapp?style=flat-square" alt="Python"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="License"></a>
+  <a href="https://github.com/Atum246/olapp/actions"><img src="https://img.shields.io/badge/tests-114%20passed-brightgreen?style=flat-square" alt="Tests"></a>
+</p>
+
+---
+
+<p align="center">
+  <img src="screenshot.png" alt="Olapp UI Screenshot" width="100%" style="border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.1);">
+</p>
 
 ## Why Olapp?
 
@@ -85,6 +97,22 @@ app.launch()
 | `HighlightedText` | Text with labeled spans (NER, sentiment) |
 | `JSON` | JSON viewer |
 | `Progress` | Progress bar |
+
+## Color Theme
+
+Olapp uses a clean, professional color palette:
+
+| Token | Light | Dark | Usage |
+|-------|-------|------|-------|
+| Primary | `#6366f1` | `#818cf8` | Buttons, links, accents |
+| Success | `#059669` | `#059669` | Success states |
+| Warning | `#d97706` | `#d97706` | Warning states |
+| Error | `#dc2626` | `#dc2626` | Error states |
+| Background | `#ffffff` | `#030712` | Page background |
+| Surface | `#ffffff` | `#111827` | Card backgrounds |
+| Border | `#e5e7eb` | `#1f2937` | Borders and dividers |
+| Text | `#111827` | `#f9fafb` | Primary text |
+| Text Secondary | `#4b5563` | `#9ca3af` | Secondary text |
 
 ## Layout (Blocks)
 
